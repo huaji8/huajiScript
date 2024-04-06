@@ -10,7 +10,8 @@
 ![alt](/img/qinglong.png)
 
 ## 赞助我~
-可以让我有更多的动力更新哦！
+  可以让我有更多的动力更新哦！
+
 ![alt](/img/wx.jpg)
 
 ## Star History
