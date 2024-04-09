@@ -1,5 +1,5 @@
 #   --------------------------------注释区--------------------------------
-#   入口:https://zdgje.icu/pages/activity/activity?fid=11652走个头谢谢
+#   入口:http://9cb279c0e3fe4450bd4f8b069b9c4173.op20skd.toptomo.cn?fid=11652
 #   变量:yuanshen_ltyd 多号方式: @分割 或 换行分割 或 新建同名变量
 #   抓取Authorization的值填入 
 #   格式：Authorization#备注 备注可不填
