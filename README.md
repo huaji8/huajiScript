@@ -1,6 +1,7 @@
 # 滑稽のScript 韭菜交流:901898186 
 
   投稿或者有问题可加群or发issues！
+  一旦使用或复制了任何相关脚本或Script项目，则视为您已接受免责声明
   
   Power By Huaji 
 
