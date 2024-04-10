@@ -8,10 +8,9 @@
 #  wxpusher的apptoken填入yuanshen_apptoken
 #  wxpusher的主题ID 填入 yuanshen_topicid
 #  不懂看 https://wxpusher.zjiecode.com/docs
-#      
+#  因被狗必举报 本脚本不做版本处理 自行Github更新
+#  当前版本1.0.3
 #   --------------------------------一般不动区--------------------------------
-#  code = "mmyd"
-#  ver = "1.0.0"
 #                     _ooOoo_
 #                    o8888888o
 #                    88" . "88
