@@ -127,7 +127,7 @@ class yuanshen():
 
     
     def task(self):
-        v = "6.0"
+        v = "7.0"
         mysign = "168"
         url = f"http://{self.domain}/wenzjks?time={int(time.time())* 1000}&mysign={mysign}&v={v}&uk={self.uk}"
         r = requests.get(url,headers=self.header_2).json()
