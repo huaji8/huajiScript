@@ -46,7 +46,6 @@
 #   --------------------------------代码区--------------------------------
 
 import requests
-import requests
 import json
 import time
 import os
