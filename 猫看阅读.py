@@ -4,7 +4,8 @@
 #   变量:yuanshen_mmyd 多号新建变量或&分割
 #   抓取Cookie填入即可
 #    corn: 看你心情
-#    作者:Huaji 仅做交流
+#    作者:Huaji 仅做交流 
+#   vernow = 2.0
 #   =====推送配置=====
 #  wxpusher的apptoken填入yuanshen_apptoken
 #  wxpusher的主题ID 填入 yuanshen_topicid
@@ -56,7 +57,7 @@ from urllib.parse import quote
 from urllib.parse import urlparse
 from functools import wraps
 requests.packages.urllib3.disable_warnings()
-
+print("=======当前版本：2.0=======")
 def retry(exceptions, tries=5, delay=2, backoff=2):
     """
     简单的重试module 重试之后还不行直接抛出错误嘿嘿
@@ -147,7 +148,7 @@ class yuanshen():
         else:
             print("联网获取检测文章列表失败！")
 
-
+    @retry(exceptions=Exception, tries=5, delay=2, backoff=2)
     def task(self):
         v = "7.0"
         mysign = "168"
@@ -176,7 +177,7 @@ class yuanshen():
             if r['msg'] == 'success':
                 print(f"🎉️阅读成功,已阅读:{r['data']['day_read']}篇,获得:{r['data']['gold']}金币")
             else:
-                print(f"❌阅读失败:[{r['data']['msg']}]")
+                print(f"❌阅读失败:[{r['data']}]")
                 return True
         else:
             print(f"❌获取文章失败:[{r}]")
@@ -199,13 +200,18 @@ class yuanshen():
                 if self.get_rqid():
                     print(f"获取request_id失败,无法提现")
                     return
-                gold = (int(r['data']['remain_gold']) // 100) * 100
-                data = f"request_id={self.rqid}&gold={gold}"
+                gold = round(int(r['data']['remain_gold']) / 1000) * 1000
+                data = {"request_id": self.rqid, "gold": gold}
                 r = requests.post(url,headers=self.header_3,data=data).json()
                 if r['msg'] == 'success':
                     print(f"✅金币转余额,获得:[{r['data']['money']}]元")
                     url = f"{self.url}/haobaobao/getwithdraw"
-                    data = f"signid={self.rqid}&ua=2&ptype=0&paccount=&pname="
+                    #data = f"signid={self.rqid}&ua=2&ptype=0&paccount=&pname="
+                    data = {"signid":self.rqid,
+                            "ua":2,
+                            "ptype":0,
+                            "paccount":'',
+                            "pname":''}
                     r = requests.post(url,headers=self.header_3,data=data).json()
                     if r['msg'] == 'success':
                         print(f"✅提现成功")
@@ -236,6 +242,7 @@ class yuanshen():
             match = re.search(r'request_id\s*=\s*"([^"]+)"', r.text)
             if match:
                 self.rqid = match.group(1)
+                print(f"✅获取request_id成功:[{self.rqid}]")
             else:
                 return True
 
