@@ -2,6 +2,7 @@
 #   因被狗仔举报 昨晚已开源+不限制下级 切勿传谣！本作者保持更新
 #   入口 http://7de2d9041017129bdf.quljo.shop/mauth/ccf882295d8f9ab71845a90f1f4f4040
 #   入口2 http://da3df5041100553ee4.wslcy03.top/mauth/eddcd6944c613977fccdf88363959080
+#   以上入口请在微信打开，ok？
 #   变量:yuanshen_mmyd 多号新建变量或&分割
 #   抓取Cookie填入即可
 #    corn: 看你心情
