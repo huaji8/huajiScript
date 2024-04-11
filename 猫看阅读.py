@@ -47,7 +47,6 @@
 #        不见满街漂亮妹，哪个归得程序员？
 #
 #   --------------------------------代码区--------------------------------
-
 import requests
 import re
 import json
@@ -136,9 +135,9 @@ class yuanshen():
             self.domain = f"{urldata.netloc}"
             self.uk = query_params.get('uk', [None])[0]
 
-            print(f"✅获取域名成功:[{self.domain}][{self.uk}]")
+            print(f"✅获取阅读域名成功:[{self.domain}][{self.uk}]")
         else:
-            print(f"❌获取域名失败:[{r['data']['msg']}]")
+            print(f"❌获取阅读域名失败:[{r}]")
 
     @retry(exceptions=Exception, tries=5, delay=2, backoff=2)
     def get_sm(self):
@@ -167,10 +166,10 @@ class yuanshen():
             if __biz in self.sm:
                 print(f"❌该文章为检测文章:[{self.read_link}]")
                 self.tuisong()
-                spt = 20
+                spt = (random.randint(18, 22))
                 time.sleep(spt)
             else:
-                spt = (random.randint(8, 12))
+                spt = (random.randint(7, 13))
                 time.sleep(spt)
     
             psign = random.randint(1, 1000)
@@ -197,12 +196,12 @@ class yuanshen():
         r = requests.get(url,headers=self.header_3).json()
         if r['msg'] == 'success':
             print(f"🎉️用户总金币:[{r['data']['remain_gold']}],今日已阅读:[{r['data']['dayreads']}]")
-            if int(r['data']['remain_gold']) >= 5000:
+            if int(r['data']['remain_gold']) >= 10000:
                 url = f'{self.url}/haobaobao/getgold'
                 if self.get_rqid():
                     print(f"获取request_id失败,无法提现")
                     return
-                gold = round(int(r['data']['remain_gold']) / 1000) * 1000
+                gold = int(r['data']['remain_gold']) // 1000 * 1000
                 data = {"request_id": self.rqid, "gold": gold}
                 r = requests.post(url,headers=self.header_3,data=data).json()
                 if r['msg'] == 'success':
