@@ -7,7 +7,7 @@
 #   抓取Cookie填入即可
 #    corn: 看你心情
 #    作者:Huaji 仅做交流 
-#   vernow = 2.0
+#   vernow = 2.1
 #   =====推送配置=====
 #  wxpusher的apptoken填入yuanshen_apptoken
 #  wxpusher的主题ID 填入 yuanshen_topicid
@@ -75,7 +75,11 @@ def retry(exceptions, tries=5, delay=2, backoff=2):
                     time.sleep(_delay)
                     _tries -= 1
                     _delay *= backoff
-            return func(*args, **kwargs)  # 最后一次尝试
+            try:
+                return func(*args, **kwargs)
+            except:
+                print("重试了还失败。重开得了")
+                  # 最后一次尝试
         return wrapper
     return decorator
 
@@ -151,7 +155,7 @@ class yuanshen():
 
     @retry(exceptions=Exception, tries=5, delay=2, backoff=2)
     def task(self):
-        v = "7.0"
+        v = "8.0"
         mysign = "168"
         url = f"http://{self.domain}/wenzjks?time={int(time.time())* 1000}&mysign={mysign}&v={v}&uk={self.uk}"
         r = requests.get(url,headers=self.header_2).json()
