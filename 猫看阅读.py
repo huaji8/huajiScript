@@ -265,7 +265,7 @@ class yuanshen():
 
 if __name__ == '__main__':
     if not ua:
-        print("❌你还没有设置ua")
+        print("❌你还没有设置ua,请在脚本内填写ua")
         exit()
 
     print("=======因被狗仔举报 本人包括下线已被全封 铭记 星星星星星er=====")
