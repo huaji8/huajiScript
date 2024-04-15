@@ -1,13 +1,13 @@
 #   --------------------------------注释&变量区--------------------------------
-#   因被狗仔举报 昨晚已开源+不限制下级 切勿传谣！本作者保持更新
-#   入口 http://7de2d9041017129bdf.quljo.shop/mauth/ccf882295d8f9ab71845a90f1f4f4040
-#   入口2 http://da3df5041100553ee4.wslcy03.top/mauth/eddcd6944c613977fccdf88363959080
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er
+#   入口 http://795a34041513117b20.kppjoru.cn/mauth/aaba9bd241473370a28bc1c78f0aee3e
 #   以上入口请在微信打开，ok？
 #   变量:yuanshen_mmyd 多号新建变量或&分割
 #   抓取Cookie填入即可
 #    corn: 看你心情
 #    作者:Huaji 仅做交流 
-#   vernow = 2.1
+ua = "" #抓包时的ua 切勿在群里问什么是ua 在哪里抓 不懂百度去
+#   vernow = 2.2
 #   =====推送配置=====
 #  wxpusher的apptoken填入yuanshen_apptoken
 #  wxpusher的主题ID 填入 yuanshen_topicid
@@ -58,7 +58,7 @@ from urllib.parse import quote
 from urllib.parse import urlparse
 from functools import wraps
 requests.packages.urllib3.disable_warnings()
-print("=======当前版本：2.0=======")
+print("=======当前版本：2.2=======")
 def retry(exceptions, tries=5, delay=2, backoff=2):
     """
     简单的重试module 重试之后还不行直接抛出错误嘿嘿
@@ -100,7 +100,7 @@ class yuanshen():
     "Connection": "keep-alive",
     "Content-Length": "0",
     "Accept": "application/json, text/javascript, */*; q=0.01",
-    "User-Agent": "Mozilla/5.0 (Linux; Android 13; 23054RA19C Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160117 MMWEBSDK/20240301 MMWEBID/98 MicroMessenger/8.0.48.2580(0x28003036) WeChat/arm64 Weixin NetType/5G Language/zh_CN ABI/arm64",
+    "User-Agent": f"{ua}",
     "X-Requested-With": "XMLHttpRequest",
     "Origin": f"http://{self.time1}.zmxshop.top",
     "Referer": f"http://{self.time1}.zmxshop.top/haobaobao/home?v={self.time2}",
@@ -110,7 +110,7 @@ class yuanshen():
 }
 
         self.header_3={
-  "User-Agent": "Mozilla/5.0 (Linux; Android 13; 23054RA19C Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/111.0.5563.116 Mobile Safari/537.36 MMWEBID/98 MicroMessenger/8.0.48.2580(0x28003036) WeChat/arm64 Weixin NetType/5G Language/zh_CN ABI/arm64",
+  "User-Agent": f"{ua}",
   "Cookie": f"{self.cookie}"
         }
         self.get_url()
@@ -118,7 +118,7 @@ class yuanshen():
     "Host": f"{self.domain}",
     "Connection": "keep-alive",
     "Accept": "application/json, text/javascript, */*; q=0.01",
-    "User-Agent": "Mozilla/5.0 (Linux; Android 13; 23054RA19C Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/111.0.5563.116 Mobile Safari/537.36 MMWEBID/98 MicroMessenger/8.0.48.2580(0x28003036) WeChat/arm64 Weixin NetType/5G Language/zh_CN ABI/arm64",
+    "User-Agent": f"{ua}",
     "X-Requested-With": "XMLHttpRequest",
     "Accept-Encoding": "gzip, deflate",
     "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7"
@@ -234,7 +234,7 @@ class yuanshen():
     "Host": f"{self.time1}.zmxshop.top",
     "Connection": "keep-alive",
     "Upgrade-Insecure-Requests": "1",
-    "User-Agent": "Mozilla/5.0 (Linux; Android 13; 23054RA19C Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160083 MMWEBSDK/20240301 MMWEBID/5295 MicroMessenger/8.0.48.2580(0x28003036) WeChat/arm64 Weixin NetType/5G Language/zh_CN ABI/arm64",
+    "User-Agent": f"{ua}",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/wxpic,image/tpg,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
     "X-Requested-With": "com.tencent.mm",
     "Referer": f"http://{self.time1}.zmxshop.top/haobaobao/home?v={self.time2}",
@@ -264,6 +264,11 @@ class yuanshen():
     
 
 if __name__ == '__main__':
+    if not ua:
+        print("❌你还没有设置ua")
+        exit()
+
+    print("=======因被狗仔举报 本人包括下线已被全封 铭记 星星星星星er=====")
     appToken = ""
     topicIds = ""
     version()
