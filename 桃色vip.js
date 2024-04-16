@@ -1,7 +1,7 @@
 /*
 #   --------------------------------注释区--------------------------------
 #   又是你们最喜欢的积分换购挑担
-#   入口:桃色vip小程序
+#   入口:桃色vip小程序 图片直达https://raw.githubusercontent.com/huaji8/huajiScript/main/img/tsvip.jpg
 #   变量:yuanshen_tsvip 多号@
 #   抓取ssid的值填入(一般在链接里面)
 #   corn:看你心情
@@ -41,7 +41,7 @@
 #   --------------------------------代码区--------------------------------
 */
 const axios = require('axios');
-const { DateTime } = require('luxon');
+
 
 function version() {
     return axios.get("https://gitee.com/HuaJiB/yuanshen34/raw/master/pubilc.txt")
@@ -51,6 +51,7 @@ function version() {
 
 class Yuanshen {
     constructor(cookie) {
+        const timestamp = Date.parse(new Date());
         this.cookie = cookie;
         this.header = {
             "Host": "wxapp.lllac.com",
@@ -64,7 +65,7 @@ class Yuanshen {
             "Sec-Fetch-Site": "same-origin",
             "Sec-Fetch-Mode": "cors",
             "Sec-Fetch-Dest": "empty",
-            "Referer": `https://wxapp.lllac.com/xqw/user_mall.php?spm=x.user&rnd=${DateTime.now()}&channel=tsvip&qudao=xcx-chaoyinhehuo&ssid=${this.cookie}&is_ipx=0&shebei=android&version=29`,
+            "Referer": `https://wxapp.lllac.com/xqw/user_mall.php?spm=x.user&rnd=${timestamp}&channel=tsvip&qudao=xcx-chaoyinhehuo&ssid=${this.cookie}&is_ipx=0&shebei=android&version=29`,
             "Accept-Encoding": "gzip, deflate",
             "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7"
         };
@@ -87,7 +88,8 @@ class Yuanshen {
     }
 
     async userinfo() {
-        const url = `https://wxapp.lllac.com/xqw/user_mall.php?spm=x.user&rnd=${DateTime.now()}&channel=tsvip&qudao=xcx-chaoyinhehuo&ssid=${this.cookie}&is_ipx=0&shebei=android&version=29`;
+        const timestamp = Date.parse(new Date());
+        const url = `https://wxapp.lllac.com/xqw/user_mall.php?spm=x.user&rnd=${timestamp}&channel=tsvip&qudao=xcx-chaoyinhehuo&ssid=${this.cookie}&is_ipx=0&shebei=android&version=29`;
         try {
             const response = await axios.get(url, { headers: this.header });
             const data = response.data;
