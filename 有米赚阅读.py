@@ -2,8 +2,8 @@
 #   
 #   入口:http://aciko1e3ow2hhn1do9n8efdadm.a6l6z56l.zhijianzzmm.cn/ttz/wechat/ttzScanCode?userShowId=3299走个头谢谢
 #   变量:yuanshen_lgyd 多号方式: @分割 或 换行分割 或 新建同名变量
-#   填入 你的用户id
-#   格式:用户id#备注 备注可不填
+#   填入 你的用户id     自行点击提现设置密码
+#   格式:用户id#备注#密码 备注可不填，不填格式为用户id##密码
 #   --------------------------------一般不动区-------------------------------
 #                     _ooOoo_
 #                    o8888888o
