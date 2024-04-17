@@ -4,6 +4,15 @@
 #   变量:yuanshen_lgyd 多号方式: @分割 或 换行分割 或 新建同名变量
 #   填入 你的用户id     自行点击提现设置密码
 #   格式:用户id#备注#密码 备注可不填，不填格式为用户id##密码
+#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
+#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
+#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
+#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
+#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
+#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
+#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
+#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
+#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
 #   --------------------------------一般不动区-------------------------------
 #                     _ooOoo_
 #                    o8888888o
@@ -45,10 +54,9 @@ import os
 import random
 from urllib.parse import urlparse, parse_qs
 import base64
-from pyzbar.pyzbar import decode
-from PIL import Image
-import io
 from functools import wraps
+import cv2
+
 
 requests.packages.urllib3.disable_warnings()
 
@@ -79,7 +87,7 @@ def retry(exceptions, tries=5, delay=2, backoff=2):
     return decorator
 class yuanshen():
     def __init__(self,bz,cookie,pwd):
-        self.pwd = cookie
+        self.pwd = pwd
         self.number=0
         self.bz = bz
         self.url = "http://xingeds.3fexgd.zhijianzzmm.cn"
@@ -100,16 +108,18 @@ class yuanshen():
 
     def gettoken(self):
         image_data = base64.b64decode(self.picturedata)
-        image = Image.open(io.BytesIO(image_data))
-        result = decode(image)
-        for i in result:
-            self.readurl = i.data.decode("utf-8")
-            data = parse_qs(urlparse(self.readurl).query)
-            self.token1 = data.get('token', [None])[0]
-            decoded_token = base64.b64decode(self.token1).decode('utf-8')
-            new_token = f"{decoded_token}&startNumber={self.number}"
-            self.token = base64.b64encode(new_token.encode('utf-8')).decode('utf-8')
-            print(f"🎉️[{self.bz}]识别阅读二维码成功:[{self.token}]")
+        with open("test.png", "wb") as f:
+            f.write(image_data)
+        qrcode_filename = "./test.png"
+        qrcode_image = cv2.imread(qrcode_filename)
+        qrCodeDetector = cv2.QRCodeDetector()
+        self.readurl, bbox, straight_qrcode = qrCodeDetector.detectAndDecode(qrcode_image)     
+        data = parse_qs(urlparse(self.readurl).query)
+        self.token1 = data.get('token', [None])[0]
+        decoded_token = base64.b64decode(self.token1).decode('utf-8')
+        new_token = f"{decoded_token}&startNumber={self.number}"
+        self.token = base64.b64encode(new_token.encode('utf-8')).decode('utf-8')
+        print(f"🎉️[{self.bz}]识别阅读二维码成功:[{self.token}]")
     
     def reftoken(self):#刷新token
         decoded_token = base64.b64decode(self.token1).decode('utf-8')
