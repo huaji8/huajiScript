@@ -38,5 +38,172 @@
 #        不见满街漂亮妹，哪个归得程序员？
 #
 #   --------------------------------代码区--------------------------------
-import bz2, base64
-exec(bz2.decompress(base64.b64decode('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')))
+import requests
+import json
+import time
+import os
+import random
+from urllib.parse import urlparse, parse_qs
+import base64
+from pyzbar.pyzbar import decode
+from PIL import Image
+import io
+from functools import wraps
+
+requests.packages.urllib3.disable_warnings()
+
+def version():
+     txt = requests.get("https://gitee.com/HuaJiB/yuanshen34/raw/master/pubilc.txt").text
+     print(txt)
+def retry(exceptions, tries=5, delay=2, backoff=2):
+    """
+    简单的重试module 重试之后还不行直接抛出错误嘿嘿
+    """
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            _tries, _delay = tries, delay
+            while _tries > 1:
+                try:
+                    return func(*args, **kwargs)
+                except exceptions as e:
+                    print(f"发生错误:[{e}], Retrying in after{_delay} ...")
+                    time.sleep(_delay)
+                    _tries -= 1
+                    _delay *= backoff
+            try:
+                return func(*args, **kwargs)
+            except:
+                print("重试了还失败。重开得了")
+        return wrapper
+    return decorator
+class yuanshen():
+    def __init__(self,bz,cookie,pwd):
+        self.pwd = cookie
+        self.number=0
+        self.bz = bz
+        self.url = "http://xingeds.3fexgd.zhijianzzmm.cn"
+        self.cookie = cookie
+        self.header={
+    "Host": "xingeds.3fexgd.zhijianzzmm.cn",
+    "Connection": "keep-alive",
+    "User-Agent": "Mozilla/5.0 (Linux; Android 13; 23054RA19C Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160117 MMWEBSDK/20240301 MMWEBID/98 MicroMessenger/8.0.48.2580(0x28003036) WeChat/arm64 Weixin NetType/5G Language/zh_CN ABI/arm64",
+    "content-type": "application/x-www-form-urlencoded",
+    "Accept": "*/*",
+    "Origin": "http://gew.gewxg.234tr.zhijianzzmm.cn",
+    "X-Requested-With": "com.tencent.mm",
+    "Referer": "http://gew.gewxg.234tr.zhijianzzmm.cn/",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+        self.getdomain()
+
+    def gettoken(self):
+        image_data = base64.b64decode(self.picturedata)
+        image = Image.open(io.BytesIO(image_data))
+        result = decode(image)
+        for i in result:
+            self.readurl = i.data.decode("utf-8")
+            data = parse_qs(urlparse(self.readurl).query)
+            self.token1 = data.get('token', [None])[0]
+            decoded_token = base64.b64decode(self.token1).decode('utf-8')
+            new_token = f"{decoded_token}&startNumber={self.number}"
+            self.token = base64.b64encode(new_token.encode('utf-8')).decode('utf-8')
+            print(f"🎉️[{self.bz}]识别阅读二维码成功:[{self.token}]")
+    
+    def reftoken(self):#刷新token
+        decoded_token = base64.b64decode(self.token1).decode('utf-8')
+        new_token = f"{decoded_token}&startNumber={self.number}"
+        self.token = base64.b64encode(new_token.encode('utf-8')).decode('utf-8')
+            
+    @retry(exceptions=Exception, tries=5, delay=2, backoff=2)
+    def getdomain(self):
+        url = f"{self.url}/ttz/api/queryActivityContentx?userShowId={self.cookie}&type=1"
+        r = json.loads(requests.get(url,headers=self.header,timeout=15).text)
+        if r["code"] == 200:
+            self.picturedata = (r["data"]["twoMicrocodeUrl"]).replace("data:image/png;base64,","")
+            self.gettoken()
+
+        else:
+            print(f"❌️[{self.bz}]获取阅读域名失败 [{r}]")
+            exit()
+    @retry(exceptions=Exception, tries=5, delay=2, backoff=2)
+    def getread(self):
+
+        self.reftoken()
+        url = f"http://xgcgmlige123.zhijianzzmm.cn/ttz/uaction/getArticleListxAuto?token={self.token}"
+        r = requests.get(url,headers=self.header,timeout=15).json()
+        if r["code"] == 200:
+            print(f"🎉️[{self.bz}]阅读成功,当前已阅读:[{r['data']['startNum']}]")
+            self.number=r["data"]["startNum"]
+        else:
+            print(f"❌️[{self.bz}]阅读失败 [{r['message']}]")
+            return True
+    @retry(exceptions=Exception, tries=5, delay=2, backoff=2)
+    def userinfo(self):
+        url = f"{self.url}/ttz/api/queryUserSumScoreById?userShowId={self.cookie}"
+        r = json.loads(requests.get(url,headers=self.header,timeout=15).text)
+        if r["code"] == 200:
+            print(f"🎉️[{self.bz}]获取用户信息成功,当前余额:[{r['data']['cashMoney']}]")
+            if  r["data"]["cashScore"] >= 5000:
+                print(f"[{self.bz}]开始提现")
+                url = f"{self.url}ttz/api/queryMoneyInfo?userShowId={self.cookie}"
+                r=requests.get(url,headers=self.header,timeout=15).json()
+                if r["code"] == 200:
+                    self.id = r["data"][1]["cashMoney"]
+                    url = f"{self.url}/ttz/pay/pocketMoney?userShowId={self.cookie}&money=5&wdPassword={self.pwd}&moneyId={self.id}"
+                    r = json.loads(requests.get(url,headers=self.header,timeout=15).text)
+                    if r["code"] == 200:
+                        print(f"🎉️[{self.bz}]提现成功")
+                    else:
+                        print(f"❌️[{self.bz}]提现失败 [{r['message']}]")
+                else:
+                    print(f"❌️[{self.bz}]获取提现信息失败 [{r['message']}]")
+            else:
+                print(f"[{self.bz}]当前余额不足5,无法提现")
+                
+        else:
+            print(f"❌️[{self.bz}]获取用户信息失败 [{r['message']}]")
+
+    def read(self):
+        self.userinfo()
+        while True:
+            if self.getread():
+                break
+            time.sleep(random.randint(8,16))
+        self.userinfo()
+
+   
+
+
+if __name__ == '__main__':
+    version()
+    cookie = ''
+    if not cookie:
+        cookie = os.getenv("yuanshen_lgyd")
+        if not cookie:
+            print("请设置环境变量:yuanshen_lgyd")
+            exit()
+    cookies = cookie.split("@")#草拟吗
+    if '@' in cookie:
+        cookies = cookie.split("@")
+    elif '\n' in cookie:
+        cookies = cookie.split("\n")
+    elif '&' in cookie:
+        cookies = cookie.split("&")
+
+    print(f"一共获取到{len(cookies)}个账号")
+    i = 1
+    for cookie in cookies:
+            ck = cookie.split("#")[0]
+            try:
+               bz = cookie.split("#")[1]
+            except:
+               bz = f"账号{i}"
+            pwd = cookie.split("#")[2]
+            print(f"\n--------开始第{i}个账号--------")
+            main = yuanshen(bz,ck,pwd)
+            main.read()
+            print(f"--------第{i}个账号执行完毕--------")
+            i += 1
+            time.sleep(random.randint(30,50))
