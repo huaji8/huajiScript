@@ -1,18 +1,9 @@
 #   --------------------------------注释区--------------------------------
-#   
 #   入口:http://aciko1e3ow2hhn1do9n8efdadm.a6l6z56l.zhijianzzmm.cn/ttz/wechat/ttzScanCode?userShowId=3299走个头谢谢
 #   变量:yuanshen_lgyd 多号方式: @分割 或 换行分割 或 新建同名变量
 #   填入 你的用户id     自行点击提现设置密码
 #   格式:用户id#备注#密码 备注可不填，不填格式为用户id##密码
-#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
-#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
-#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
-#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
-#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
-#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
-#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
-#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
-#   先安装依赖opencv-python 先安装依赖opencv-python 先安装依赖opencv-python
+#   无需增加任何依赖    调用第三方接口实现二维码识别
 #   --------------------------------一般不动区-------------------------------
 #                     _ooOoo_
 #                    o8888888o
@@ -55,8 +46,6 @@ import random
 from urllib.parse import urlparse, parse_qs
 import base64
 from functools import wraps
-import cv2
-
 
 requests.packages.urllib3.disable_warnings()
 
@@ -107,13 +96,15 @@ class yuanshen():
         self.getdomain()
 
     def gettoken(self):
-        image_data = base64.b64decode(self.picturedata)
-        with open("test.png", "wb") as f:
-            f.write(image_data)
-        qrcode_filename = "./test.png"
-        qrcode_image = cv2.imread(qrcode_filename)
-        qrCodeDetector = cv2.QRCodeDetector()
-        self.readurl, bbox, straight_qrcode = qrCodeDetector.detectAndDecode(qrcode_image)     
+        data = { "data" :f"{self.picturedata}"}
+        pst = json.dumps(data)
+        req = requests.post(url="http://api.wer.plus/api/ymqr",data=pst).json()##调用三方接口
+        if req["code"] == 200:
+            self.readurl = req["data"]["text"]
+        else:
+            print(f"❌️[{self.bz}]获取token失败 [{req['message']}]")
+            exit()
+
         data = parse_qs(urlparse(self.readurl).query)
         self.token1 = data.get('token', [None])[0]
         decoded_token = base64.b64decode(self.token1).decode('utf-8')
@@ -131,7 +122,7 @@ class yuanshen():
         url = f"{self.url}/ttz/api/queryActivityContentx?userShowId={self.cookie}&type=1"
         r = json.loads(requests.get(url,headers=self.header,timeout=15).text)
         if r["code"] == 200:
-            self.picturedata = (r["data"]["twoMicrocodeUrl"]).replace("data:image/png;base64,","")
+            self.picturedata = (r["data"]["twoMicrocodeUrl"])
             self.gettoken()
 
         else:
