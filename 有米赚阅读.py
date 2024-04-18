@@ -120,6 +120,7 @@ class yuanshen():
     @retry(exceptions=Exception, tries=5, delay=2, backoff=2)
     def getdomain(self):
         url = f"{self.url}/ttz/api/queryActivityContentx?userShowId={self.cookie}&type=1"
+        print(url)
         r = json.loads(requests.get(url,headers=self.header,timeout=15).text)
         if r["code"] == 200:
             self.picturedata = (r["data"]["twoMicrocodeUrl"])
@@ -201,6 +202,8 @@ if __name__ == '__main__':
                bz = cookie.split("#")[1]
             except:
                bz = f"账号{i}"
+            if not bz:
+                bz = f"账号{i}"
             pwd = cookie.split("#")[2]
             print(f"\n--------开始第{i}个账号--------")
             main = yuanshen(bz,ck,pwd)
