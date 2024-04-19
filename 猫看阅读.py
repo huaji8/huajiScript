@@ -1,5 +1,18 @@
 #   --------------------------------注释&变量区--------------------------------
-#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
+#   因被狗仔举报 本人下线已被全封 铭记 星星星星星er    故无法更新或延迟更新，可能封号，慎用
 #   入口 http://795a34041513117b20.kppjoru.cn/mauth/aaba9bd241473370a28bc1c78f0aee3e
 #   以上入口请在微信打开，ok？
 #   变量:yuanshen_mmyd 多号新建变量或&分割
@@ -7,7 +20,7 @@
 #    corn: 看你心情
 #    作者:Huaji 仅做交流 
 ua = "" #抓包时的ua 切勿在群里问什么是ua 在哪里抓 不懂百度去
-#   vernow = 2.2
+#   vernow = 2.3
 #   =====推送配置=====
 #  wxpusher的apptoken填入yuanshen_apptoken
 #  wxpusher的主题ID 填入 yuanshen_topicid
@@ -58,7 +71,7 @@ from urllib.parse import quote
 from urllib.parse import urlparse
 from functools import wraps
 requests.packages.urllib3.disable_warnings()
-print("=======当前版本：2.2=======")
+print("=======当前版本：2.3=======")
 def retry(exceptions, tries=5, delay=2, backoff=2):
     """
     简单的重试module 重试之后还不行直接抛出错误嘿嘿
@@ -156,7 +169,7 @@ class yuanshen():
 
     @retry(exceptions=Exception, tries=5, delay=2, backoff=2)
     def task(self):
-        v = "8.0"
+        v = "9.0"
         mysign = "168"
         url = f"http://{self.domain}/wenzjks?time={int(time.time())* 1000}&mysign={mysign}&v={v}&uk={self.uk}"
         r = requests.get(url,headers=self.header_2).json()
