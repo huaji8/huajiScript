@@ -1,9 +1,10 @@
 #   --------------------------------注释区--------------------------------
-#   入口:http://aciko1e3ow2hhn1do9n8efdadm.a6l6z56l.zhijianzzmm.cn/ttz/wechat/ttzScanCode?userShowId=3299走个头谢谢
+#   入口:http://aciko1e3ow2hhn1do9n8efdadm.a6l6z56l.zhijianzzmm.cn/ttz/wechat/ttzScanCode?userShowId=4299走个头谢谢
 #   变量:yuanshen_lgyd 多号方式: @分割 或 换行分割 或 新建同名变量
 #   填入 你的用户id     自行点击提现设置密码
 #   格式:用户id#备注#密码 备注可不填，不填格式为用户id##密码
 #   无需增加任何依赖    调用第三方接口实现二维码识别
+#   vernow = 2.1
 #   --------------------------------一般不动区-------------------------------
 #                     _ooOoo_
 #                    o8888888o
@@ -72,6 +73,7 @@ def retry(exceptions, tries=5, delay=2, backoff=2):
                 return func(*args, **kwargs)
             except:
                 print("重试了还失败。重开得了")
+                exit()
         return wrapper
     return decorator
 class yuanshen():
@@ -131,12 +133,20 @@ class yuanshen():
             exit()
     @retry(exceptions=Exception, tries=5, delay=2, backoff=2)
     def getread(self):
-
         self.reftoken()
         url = f"http://xgcgmlige123.zhijianzzmm.cn/ttz/uaction/getArticleListxAuto?token={self.token}"
         r = requests.get(url,headers=self.header,timeout=15).json()
         if r["code"] == 200:
-            print(f"🎉️[{self.bz}]阅读成功,当前已阅读:[{r['data']['startNum']}]")
+            if self.number == 20:
+                return True
+            if r['data']['code'] == "200":
+                print(f"🎉️[{self.bz}]阅读成功,当前已阅读:[{r['data']['startNum']}]")
+            elif r['data']['code'] == "110":
+                print("❌️文章没了孩子，等下再来撸吧❌️")
+                return True
+            else:
+                print(f"❌️[{self.bz}]阅读失败 错误码[{r['data']['code']}]")
+                return True
             self.number=r["data"]["startNum"]
         else:
             print(f"❌️[{self.bz}]阅读失败 [{r['message']}]")
