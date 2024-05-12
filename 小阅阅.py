@@ -2,7 +2,7 @@
 #   入口，微信打开：http://94b34e05121451.fxi3z.shop/mesauth/3885dd2e3833f9597b53927edcae23a5?u=2
 #   检测文章推送设置：在yuanshen_apptoken，yuanshen_topicid填入你的wxpusher的apptoken和topicid
 #   不懂看https://wxpusher.zjiecode.com/docs/#/
-#   在任意接口抓取请求头中的ysmuid和请求体中的unionid 填入yuanshen_xyy 多号@分割
+#   在任意接口抓取请求头中的ysmuid 填入yuanshen_xyy 多号@分割
 #   格式 ysmuid=****@ysmuid=****   ysmuid=这个不要漏
 #   接口变化会自动停止 基本不用担心封号  默认多线程三线程执行
 #   无自动提现 懒得写 就酱
