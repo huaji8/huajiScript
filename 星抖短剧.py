@@ -38,8 +38,6 @@ exchange = True #是否自动兑换猪 开启True 关闭False
 #        不见满街漂亮妹，哪个归得程序员？
 #
 #   --------------------------------代码区--------------------------------
-gold = False#疯狂模式
-watch_film = False
 import requests
 import json
 import time
@@ -60,12 +58,15 @@ class yuanshen():
         self.cookie = cookie
         self.header = {
     "Authorization": f"{self.cookie}",
-    "X-Version-Code":"122",
+    "X-Version-Code": "124",
+    "X-Platform": "android",
+    "X-System": "13",
+    "X-Brand": "Redmi",
     "Content-Type": "application/json; charset=utf-8",
     "Host": "api.xingdouduanju.com",
     "Connection": "Keep-Alive",
     "Accept-Encoding": "gzip",
-    "User-Agent": "okhttp/3.14.9"
+    "User-Agent": "okhttp/4.9.2"
 }
 
     def _md5(self,s):
@@ -84,35 +85,39 @@ class yuanshen():
         url = f"https://api.xingdouduanju.com/api/gold_tasks/{id}/complete"
         self.nonce = self._nonce()
         self.time = self._time()
-        if id == 1:
-            self.sign = self._md5(f"{id}&{self.time}&{self.nonce}&{self.key}")
+        if id == 11 or id == 1:
+            self.sign = self._md5(f"{id}&{self.time}&{self.nonce}&{self.key}&true")
         else:
-            self.sign = self._md5(f"{self.time}&{id}&{self.nonce}&{self.key}")
-        data = json.dumps({
+            self.sign = self._md5(f"{self.time}&{id}&{self.nonce}&{self.key}&true")
+        data = {
             "timestamp": f"{self.time}",
             "nonce": f"{self.nonce}",
             "id": f"{id}",
+            "done":True,
             "sign": f"{self.sign}"
-        })
-        r = requests.post(url,headers=self.header,data=data).json()
+        }
+        r = requests.post(url,headers=self.header,json=data).json()
         if r["code"] == 200001:
-            print(f"✅做任务[{name}]成功,获得金币[{r['data']['reward']}]")
+            if id == 11:
+                print(f"✅做任务[{id}][{name}]成功,获得现金[{r['data']['reward']}]")
+            else:
+                print(f"✅做任务[{id}][{name}]成功,获得金币[{r['data']['reward']}]")
             if id == 1:
                 time.sleep(random.randint(10,30))
             elif id == 5:
                 time.sleep(random.randint(61,63))
             elif id == 6:
                 time.sleep(random.randint(34,60))
+            else:
+                time.sleep(random.randint(10,20))
         else:
-            print(f"❌️做任务[{name}]失败,错误信息:{r}")
-            time.sleep(random.randint(10,20))
+            print(f"❌️做任务[{id}][{name}]失败,错误信息:{r}")
+            time.sleep(random.randint(5,15))
 
     def daily_task(self):
         url = f"{self.url}/api/gold_tasks"
         r = requests.get(url,headers=self.header).json()
-        do_id_list = [1,5,6]
-        if gold:
-            do_id_list = [3,2,4]
+        do_id_list = [1,5,6,11]
         if r["code"] == 200001:
             print("🎉️获取任务列表成功！")
             for dataa in r["data"]["tasks"]:
@@ -128,52 +133,6 @@ class yuanshen():
                     print(f"❌️跳过任务[{rjson['name']}]")
         else:
             print(f"❌️获取任务失败,错误信息:{r}")
-
-    def watch_video(self):
-     try:
-        url = f"{self.url}/api/watch_video_duration_tasks"
-        r = requests.get(url,headers=self.header).json()
-        if r["code"] == 200001:
-                print("🎉️获取看剧任务列表成功！")
-                for dataa in r["data"]:
-                    rjson = json.loads(json.dumps(dataa))
-                    id = rjson['id']
-                    if rjson['hasReceived']: 
-                        print(f"❌️跳过任务[{rjson['duration']}]")
-                    else:
-                        url = f"{self.url}/api/watch_video_duration_tasks/{id}/complete"
-                        self.nonce = self._nonce()
-                        self.time = self._time()
-                        if id == 1:
-                            self.sign = self._md5(f"{id}&{self.time}&{self.nonce}&{self.key}")
-                        if id == 2:
-                            self.sign = self._md5(f"{self.time}&{id}&{self.nonce}&{self.key}")
-                        if id == 3:
-                            self.sign = self._md5(f"{self.time}&{id}&{self.nonce}&{self.key}")
-
-                        data = json.dumps({
-                    "timestamp": f"{self.time}",
-                    "nonce": f"{self.nonce}",
-                    "id": f"{id}",
-                    "sign": f"{self.sign}"
-                })
-                        r = requests.post(url,headers=self.header,data=data).json()
-                        if r["code"] == 200001:
-                            print(f"✅看剧任务[{rjson['duration']}]成功,获得金币[{rjson['minReward']}]")
-                            time.sleep(random.randint(10,20))
-                            if id == 1:
-                                time.sleep(random.randint(300,320))
-                            if id == 2:
-                                time.sleep(random.randint(1200,1500))
-                        else:
-                            print(f"❌️看剧任务[{rjson['duration']}]失败,错误信息:{r}")
-                            if "验签" in r['message']:
-                                print("重试任务ing..")
-                                return self.watch_video()
-                            time.sleep(random.randint(10,20))
-     except Exception as e:
-        print(f"❌️任务失败,错误信息:{e}")
-
 
     def get_gold(self):
         url = f"{self.url}/api/gold_pigs/info"
@@ -217,10 +176,7 @@ class yuanshen():
                 r = requests.post(url,headers=self.header,data=data).json()
                 if r["code"] == 200001:
                     print(f"✅兑换猪仔成功 [{r['message']}]")
-                    if gold:
-                        pass
-                    else:
-                        time.sleep(random.randint(5,10))
+                    time.sleep(random.randint(5,10))
                 else:
                     print(f"❌️兑换猪仔失败,错误信息 [{r['message']}]")
                     break
@@ -250,12 +206,12 @@ class yuanshen():
             self.time = self._time()
             self.nonce = self._nonce()
             self.sign = self._md5(f"{self.time}&{self.nonce}&{self.key}")
-            data = json.dumps({
+            data = {
                 "timestamp": f"{self.time}",
                 "nonce": f"{self.nonce}",
                 "sign": f"{self.sign}"
-            })
-            r = requests.post(url,headers=self.header,data=data).json()
+            }
+            r = requests.post(url,headers=self.header,json=data).json()
             if r["code"] == 200001:
                 print(f"✅领取团队金块成功 [{r['message']}]")
             else:
@@ -302,12 +258,6 @@ class yuanshen():
     def task(self):
         print("🎉️开始执行[日常任务]")
         self.daily_task()
-        print("===========================")
-        if watch_film:
-            print("🎉️开始执行[看剧任务]")
-            self.watch_video()
-        else:
-            print("❌️跳过看剧任务")
         print("===========================")
         print("🎉️开始执行[领取金块]")
         self.get_gold()
