@@ -58,7 +58,7 @@ class yuanshen():
         self.cookie = cookie
         self.header = {
     "Authorization": f"{self.cookie}",
-    "X-Version-Code": "124",
+    "X-Version-Code": "126",
     "X-Platform": "android",
     "X-System": "13",
     "X-Brand": "Redmi",
