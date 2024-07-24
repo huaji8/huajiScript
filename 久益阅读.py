@@ -7,6 +7,7 @@
 #   抓请求头中Token和Cookie中的jylm的值填入 
 #   同时填入抓包时的域名 假如抓包时的链接是 http://auvagptd.llvfvr.cn/api/v1/User/getReadsCycle 则填 auvagptd.llvfvr.cn
 #   格式 Token#jylm#域名
+#   在抓取上面的参数时同时抓取请求头中的user-agent填入yuanshen_useragent
 #   corn: 一小时一次
 #
 #   检测配置：
