@@ -1,5 +1,5 @@
 # 滑稽のScript仓库
-# Huajiの小站:https://huaji.asia 购物站 https://buy.huaji.asia
+# Huajiの小站:https://huaji.asia 购物站 https://shop.huaji.asia
 
 ## 一旦使用或复制了任何相关脚本或Script项目，则视为您已接受免责声明
    韭菜交流QQ群:901898186
