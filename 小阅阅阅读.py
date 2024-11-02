@@ -5,7 +5,7 @@
 #   格式 ysmuid#unionid
 #   接口变化会自动停止
 #
-#   在抓取上面的udtauth12时同时抓取请求头中的user-agent填入yuanshen_useragent 多号也只需一个，与其他阅读通用，之前填过了或其他阅读填过了无需再增加
+#   在抓取上面的参数的同时抓取请求头中的user-agent填入yuanshen_useragent 多号也只需一个，与其他阅读通用，之前填过了或其他阅读填过了无需再增加
 #   corn: 一小时一次即可
 #
 #   检测配置：
