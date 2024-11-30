@@ -2,7 +2,7 @@
 #   入口:微信打开 http://smcnkbsm.kpknjwver8n.cn/index/invite/BH9XPFEzUjdUMg
 #   走个头谢谢 不然没更新动力了呜呜呜
 #
-#   抓取yidianapi.plsvcrthcs.top域名下的请求url中token的值和cookie中jylm的值
+#   抓取yidianapi.plsvcrthcs.top域名下的请求url中token的值
 #   变量名:yuanshen_ydlm
 #   多号分割方式 [ 换行 或 新建同名变量 或 @分割]
 #
