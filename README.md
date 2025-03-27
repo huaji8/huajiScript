@@ -1,8 +1,7 @@
 
 # 滑稽の青龙自用Script仓库 
 # 投稿:[点击直达](https://tool.huaji.asia/submit) 私聊投稿可能来不及回
-### Huajiの小站 [点击直达](https://huaji.asia)
-### Huajiの购物站 [点击直达](https://shop.huaji.asia)
+## Huajiの购物站 [点击直达](https://shop.huaji.asia)
 ## 一旦使用或复制了任何相关脚本或Script项目，则视为您已接受免责声明
 
 
@@ -16,12 +15,12 @@
   
   Power By Huaji 
 
-## 拉库方法 About 青龙
+## 拉库方法 Of 青龙
 青龙-订阅管理-填入随意名称-填入链接-定时 8 * * * *
 链接可选
 
     * https://github.com/huaji8/huajiScript.git (国外机器)
-    * https://mirror.ghproxy.com/https://github.com/huaji8/huajiScript.git (国内机器)
+    * https://github.huaji.asia/https://github.com/huaji8/huajiScript.git (国内机器)
 
 ![alt](/img/qinglong.png)
 
