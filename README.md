@@ -1,6 +1,6 @@
 
 # 滑稽の青龙自用Script仓库 
-# 投稿请QQ私聊本人
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 ## Huajiの购物站 [点击直达](https://shop.huaji.asia)
 ## 一旦使用或复制了任何相关脚本或Script项目，则视为您已接受免责声明
 
@@ -27,6 +27,13 @@
 
 [![Star History Chart](https://api.star-history.com/svg?repos=huaji8/huajiScript&type=Date)](https://star-history.com/#huaji8/huajiScript&Date)
 
+
+## License
+- 核心代码遵循 [AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.en.html) 协议  
+- 附加约束条款：
+  1. **禁止商业集成**：不得将本代码用于付费服务、商业SDK等盈利场景
+  2. **逆向溯源声明**：若代码包含第三方逆向成果，需在文档中注明原始软件名称及版本
+  3. **隔离使用要求**：必须部署在独立测试环境，禁止接入生产系统
 
 # 免责声明
 
