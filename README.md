@@ -14,7 +14,7 @@
 青龙-订阅管理-填入随意名称-填入链接-定时 8 * * * *
 
     *  https://github.com/huaji8/huajiScript.git [国外机器]
-    *  https://github.huaji.asia/https://github.com/huaji8/huajiScript.git [国内机器]
+    *  https://gitclone.com/https://github.com/huaji8/huajiScript.git [国内机器] 不行自行寻找git加速代理 或 尝试直接拉取
 
 ![alt](/img/qinglong.png)
 
