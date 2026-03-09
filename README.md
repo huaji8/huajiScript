@@ -1,7 +1,7 @@
 
 # 滑稽の青龙自用Script仓库 
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-## Huajiの购物站 [点击直达](https://shop.huaji.asia)
+
 ## 一旦使用或复制了任何相关脚本或Script项目，则视为您已接受免责声明
 
   韭菜交流QQ群:1091802710 投稿私 3487934983
@@ -18,10 +18,7 @@
 
 ![alt](/img/qinglong.png)
 
-## 赞助我~
-  在 Huajiの购物站 [点击直达](https://shop.huaji.asia) 赞助即是对我最大的支持
-  有钱捧个场 没钱点个star
-  赞助可以让我有更多的动力更新哦！
+
 
 ## Star History
 
